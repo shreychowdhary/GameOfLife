@@ -32,7 +32,7 @@ function initateGrid(){
 		for(i = 0; i < 10; i++){
 			for(j = 0; j < 30; j++){
 				if(i==0 && j == 29){
-					console.log(data);
+					console.log(typeof(data));
 				}
 			}
 		}
