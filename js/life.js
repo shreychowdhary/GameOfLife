@@ -32,12 +32,13 @@ function initateGrid(){
 		success:function(data){
 			for(i = 0; i < 10; i++){
 				for(j = 0; j < 30; j++){
+					console.log(data);
 					grid[j][i] = data.charAt((i*31)+j);
 				}
 			}
 		},
 		dataType:"text",
-		async:false);
+		async:false});
 }
 
 function mod(num,mod){
