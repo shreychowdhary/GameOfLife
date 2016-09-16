@@ -28,13 +28,16 @@ function initateGrid(){
 			}
 		}
 	}
-	$.get("txt/start.txt",function(data){
-		for(i = 0; i < 10; i++){
-			for(j = 0; j < 30; j++){
-				grid[j][i] = data.charAt((i*31)+j);
+	$.ajax({url:"txt/start.txt",
+		success:function(data){
+			for(i = 0; i < 10; i++){
+				for(j = 0; j < 30; j++){
+					grid[j][i] = data.charAt((i*31)+j);
+				}
 			}
-		}
-	},"text");
+		},
+		dataType:"text",
+		async:false);
 }
 
 function mod(num,mod){
