@@ -1,4 +1,4 @@
-var FPS = 2;
+var FPS = 5;
 var canvas = document.getElementById("myCanvas");
 var grid = [];
 var futureGrid;
