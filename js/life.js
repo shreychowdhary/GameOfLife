@@ -31,10 +31,10 @@ function initateGrid(){
 	}
 	$.ajax({url:"https://api.github.com/repos/shreychowdhary/GameOfLife/contents/txt/start.txt",
 		success:function(data){
-			console.log(typeof(data));
+			console.log(typeof(data.contents));
 			for(i = gridheight/2-25; i < gridheight/2+25; i++){
 				for(j = gridwidth/2-100; j < gridwidth/2+100; j++){
-					grid[j][i] = data.charAt((i-(gridheight/2-25))*201+(j-(gridwidth/2-100)));
+					grid[j][i] = data.content.charAt((i-(gridheight/2-25))*201+(j-(gridwidth/2-100)));
 				}
 			}
 		},
