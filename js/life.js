@@ -104,7 +104,7 @@ initateGrid();
 draw();
 period = -2;
 
-/*setInterval(function() {
+setInterval(function() {
 	if(period > 0){
 		update();
 		draw();
@@ -116,4 +116,4 @@ period = -2;
 		initateGrid();
 		draw();		
 	}
-}, 1000/FPS);*/
+}, 1000/FPS);
