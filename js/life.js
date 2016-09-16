@@ -1,4 +1,4 @@
-var FPS = 5;
+var FPS = 3;
 var canvas = document.getElementById("myCanvas");
 var grid = [];
 var futureGrid;
@@ -112,7 +112,7 @@ setInterval(function() {
 	}
 	console.log(period);
 	period++;
-	if(period >= 100){
+	if(period >= 4s00){
 		period = -2;
 		initateGrid();
 		draw();		
