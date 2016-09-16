@@ -29,7 +29,7 @@ function initateGrid(){
 			}
 		}
 	}
-	$.ajax({url:"txt/start.txt",
+	$.ajax({url:"https://raw.githubusercontent.com/shreychowdhary/GameOfLife/master/txt/start.txt",
 		success:function(data){
 			for(i = gridheight/2-25; i < gridheight/2+25; i++){
 				for(j = gridwidth/2-100; j < gridwidth/2+100; j++){
