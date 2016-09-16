@@ -33,7 +33,7 @@ function initateGrid(){
 		success:function(data){
 			for(i = gridheight/2-25; i < gridheight/2+25; i++){
 				for(j = gridwidth/2-100; j < gridheight/2+100; j++){
-					grid[j][i] = data.charAt((i*201)+j);
+					grid[j][i] = data.charAt((i-(gridheight/2-25))*201+(j-(gridwidth/2-100)));
 				}
 			}
 		},
