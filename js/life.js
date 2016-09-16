@@ -11,7 +11,14 @@ console.log(gridwidth);
 pixelwidth = canvas.width/gridwidth;
 pixelheight = canvas.height/gridheight;
 
+function load(){
+
+}
+
 function initateGrid(){
+	$.get("txt/start.txt",function(){
+		alert("hi");
+	},"text");
 	grid.length = gridwidth;
 	for(i = 0; i < gridwidth; i++){
 		grid[i] = [];
@@ -85,8 +92,18 @@ function draw(){
 
 initateGrid();
 draw();
+period = -2;
 
 setInterval(function() {
-	update();
-	draw();
+	if(period > 0){
+		update();
+		draw();
+	}
+	console.log(period);
+	period++;
+	if(period >= 100){
+		period = -2;
+		initateGrid();
+		draw();		
+	}
 }, 1000/FPS);
