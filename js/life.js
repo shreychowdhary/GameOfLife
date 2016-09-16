@@ -16,8 +16,8 @@ function load(){
 }
 
 function initateGrid(){
-	$.get("txt/start.txt",function(){
-		alert("hi");
+	$.get("txt/start.txt",function(data){
+		alert(data);
 	},"text");
 	grid.length = gridwidth;
 	for(i = 0; i < gridwidth; i++){
