@@ -112,7 +112,7 @@ setInterval(function() {
 	}
 	console.log(period);
 	period++;
-	if(period >= 4s00){
+	if(period >= 400){
 		period = -2;
 		initateGrid();
 		draw();		
