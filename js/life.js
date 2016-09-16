@@ -16,9 +16,7 @@ function load(){
 }
 
 function initateGrid(){
-	$.get("txt/start.txt",function(data){
-		alert(data);
-	},"text");
+	
 	grid.length = gridwidth;
 	for(i = 0; i < gridwidth; i++){
 		grid[i] = [];
@@ -30,6 +28,15 @@ function initateGrid(){
 			}
 		}
 	}
+	$.get("txt/start.txt",function(data){
+		for(i = 0; i < 10; i++){
+			for(j = 0; j < 30; j++){
+				if(i==0 && j == 29){
+					console.log(data.char(29) + " " + data.char(30));
+				}
+			}
+		}
+	},"text");
 }
 
 function mod(num,mod){
