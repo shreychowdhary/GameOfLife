@@ -35,7 +35,7 @@ function initateGrid(){
 			console.log(text);
 			for(i = gridheight/2-25; i < gridheight/2+25; i++){
 				for(j = gridwidth/2-100; j < gridwidth/2+100; j++){
-					grid[j][i] = text.content.charAt((i-(gridheight/2-25))*201+(j-(gridwidth/2-100)));
+					grid[j][i] = text.charAt((i-(gridheight/2-25))*201+(j-(gridwidth/2-100)));
 				}
 			}
 		},
