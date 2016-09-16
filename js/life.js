@@ -31,9 +31,7 @@ function initateGrid(){
 	$.get("txt/start.txt",function(data){
 		for(i = 0; i < 10; i++){
 			for(j = 0; j < 30; j++){
-				if(i==0 && j == 29){
-					console.log(data.charAt(30) + " " + data.charAt(31));
-				}
+				grid[j][i] = data.charAt((i*31)+j);
 			}
 		}
 	},"text");
@@ -101,7 +99,7 @@ initateGrid();
 draw();
 period = -2;
 
-setInterval(function() {
+/*setInterval(function() {
 	if(period > 0){
 		update();
 		draw();
@@ -113,4 +111,4 @@ setInterval(function() {
 		initateGrid();
 		draw();		
 	}
-}, 1000/FPS);
+}, 1000/FPS);*/
