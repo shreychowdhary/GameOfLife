@@ -38,7 +38,7 @@ function initateGrid(){
 				}
 			}
 		},
-		dataType:"text",
+		dataType:"json",
 		async:false});
 }
 
