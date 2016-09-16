@@ -2,14 +2,15 @@ var FPS = 2;
 var canvas = document.getElementById("myCanvas");
 var grid = [];
 var futureGrid;
-canvas.width = Math.ceil(document.documentElement.clientWidth/4)*4;
-canvas.height = Math.ceil(document.documentElement.clientHeight/4)*4;
+pixelwidth = 4;
+pixelheight = 4;
+canvas.width = Math.ceil(document.documentElement.clientWidth/pixelwidth)*pixelwidth;
+canvas.height = Math.ceil(document.documentElement.clientHeight/pixelheight)*pixelheight;
 console.log(document.documentElement.clientHeight);
-gridwidth = canvas.width/4;
-gridheight = canvas.height/4;
+gridwidth = canvas.width/pixelwidth;
+gridheight = canvas.height/pixelwidth;
 console.log(gridwidth);
-pixelwidth = canvas.width/gridwidth;
-pixelheight = canvas.height/gridheight;
+
 
 function load(){
 
