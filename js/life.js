@@ -32,7 +32,7 @@ function initateGrid(){
 		for(i = 0; i < 10; i++){
 			for(j = 0; j < 30; j++){
 				if(i==0 && j == 29){
-					console.log(data.text.charAt(29) + " " + data.text.charAt(30) + " " + data.text.charAt(31));
+					console.log(data.text.charAt(29) + " " + data.text.charAt(30));
 				}
 			}
 		}
