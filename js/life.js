@@ -1,4 +1,4 @@
-var FPS = 2;
+var FPS = 1;
 var canvas = document.getElementById("myCanvas");
 var grid = [];
 var futureGrid;
@@ -33,7 +33,6 @@ function initateGrid(){
 		success:function(data){
 			for(i = 0; i < 50; i++){
 				for(j = 0; j < 200; j++){
-					console.log(data);
 					grid[j][i] = data.charAt((i*201)+j);
 				}
 			}
