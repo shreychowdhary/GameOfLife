@@ -4,17 +4,16 @@ var grid = [];
 var futureGrid;
 pixelwidth = 4;
 pixelheight = 4;
-canvas.width = Math.ceil(document.documentElement.clientWidth/pixelwidth)*pixelwidth;
-canvas.height = Math.ceil(document.documentElement.clientHeight/pixelheight)*pixelheight;
-console.log(document.documentElement.clientHeight);
-gridwidth = canvas.width/pixelwidth;
-gridheight = canvas.height/pixelwidth;
-console.log(gridwidth);
 
-
-function load(){
-
+if(window.outerWidth < 1000 || window.outerHeight < 400){
+	pixelwidth = Math.floor(window.outerWidth/250);
+	pixelheight = Math.floor(window.outerHeight/100);
 }
+canvas.width = Math.ceil(window.outerWidth/(pixelwidth*2))*pixelwidth*2;
+canvas.height = Math.ceil(window.outerHeight/(pixelheight*2))*pixelheight*2;
+
+gridwidth = canvas.width/pixelwidth;
+gridheight = canvas.height/pixelheight;
 
 function initateGrid(){
 	
@@ -31,7 +30,7 @@ function initateGrid(){
 	}
 	$.ajax({url:"https://api.github.com/repos/shreychowdhary/GameOfLife/contents/txt/start.txt",
 		success:function(data){
-			text = atob(data.content);
+			text = decode(data.content);
 			console.log(text);
 			for(i = gridheight/2-25; i < gridheight/2+25; i++){
 				for(j = gridwidth/2-100; j < gridwidth/2+100; j++){
@@ -110,11 +109,72 @@ setInterval(function() {
 		update();
 		draw();
 	}
-	console.log(period);
 	period++;
-	if(period >= 400){
-		period = -2;
-		initateGrid();
-		draw();		
-	}
 }, 1000/FPS);
+
+
+function decode (input) {
+	_keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+    var output = "";
+    var chr1, chr2, chr3;
+    var enc1, enc2, enc3, enc4;
+    var i = 0;
+
+    input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+
+    while (i < input.length) {
+
+        enc1 = _keyStr.indexOf(input.charAt(i++));
+        enc2 = _keyStr.indexOf(input.charAt(i++));
+        enc3 = _keyStr.indexOf(input.charAt(i++));
+        enc4 = _keyStr.indexOf(input.charAt(i++));
+
+        chr1 = (enc1 << 2) | (enc2 >> 4);
+        chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+        chr3 = ((enc3 & 3) << 6) | enc4;
+
+        output = output + String.fromCharCode(chr1);
+
+        if (enc3 != 64) {
+            output = output + String.fromCharCode(chr2);
+        }
+        if (enc4 != 64) {
+            output = output + String.fromCharCode(chr3);
+        }
+
+    }
+
+    output = _utf8_decode(output);
+
+    return output;
+}
+
+function _utf8_decode(utftext) {
+    var string = "";
+    var i = 0;
+    var c = c1 = c2 = 0;
+
+    while (i < utftext.length) {
+
+        c = utftext.charCodeAt(i);
+
+        if (c < 128) {
+            string += String.fromCharCode(c);
+            i++;
+        }
+        else if ((c > 191) && (c < 224)) {
+            c2 = utftext.charCodeAt(i + 1);
+            string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
+            i += 2;
+        }
+        else {
+            c2 = utftext.charCodeAt(i + 1);
+            c3 = utftext.charCodeAt(i + 2);
+            string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
+            i += 3;
+        }
+
+    }
+
+    return string;
+}
